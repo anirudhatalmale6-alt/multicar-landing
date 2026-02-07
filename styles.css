@@ -170,6 +170,15 @@ img {
     overflow: hidden;
 }
 
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('img/fondo-interior.jpg') center center / cover no-repeat;
+    opacity: 0.2;
+    z-index: 0;
+}
+
 .hero-bg {
     position: absolute;
     inset: 0;
