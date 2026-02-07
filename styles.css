@@ -668,6 +668,31 @@ section {
 .experiencias {
     background: var(--bg-dark);
     position: relative;
+    overflow: hidden;
+}
+
+.experiencias::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('img/panel-golf-interior.jpg') center center / cover no-repeat;
+    opacity: 0.15;
+    z-index: 0;
+}
+
+.experiencias::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, var(--bg-dark) 0%, transparent 20%, transparent 80%, var(--bg-dark) 100%);
+    z-index: 1;
+}
+
+.experiencias .section-header,
+.experiencias .testimonios-grid,
+.experiencias .stats-bar {
+    position: relative;
+    z-index: 2;
 }
 
 .testimonios-grid {
