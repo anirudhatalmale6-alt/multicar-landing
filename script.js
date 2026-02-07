@@ -154,6 +154,73 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ========================================
+    // PRODUCT CAROUSELS
+    // ========================================
+    const carousels = document.querySelectorAll('.producto-image.carousel');
+
+    carousels.forEach(carousel => {
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const dots = carousel.querySelectorAll('.carousel-dots .dot');
+        const prevBtn = carousel.querySelector('.carousel-btn.prev');
+        const nextBtn = carousel.querySelector('.carousel-btn.next');
+        let currentSlide = 0;
+        let autoPlayInterval;
+
+        function showSlide(index) {
+            // Handle wrap-around
+            if (index >= slides.length) index = 0;
+            if (index < 0) index = slides.length - 1;
+            currentSlide = index;
+
+            // Update slides
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentSlide);
+            });
+
+            // Update dots
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Auto-play
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(nextSlide, 4000);
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+
+        // Event listeners
+        if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); stopAutoPlay(); startAutoPlay(); });
+        if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); stopAutoPlay(); startAutoPlay(); });
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                showSlide(i);
+                stopAutoPlay();
+                startAutoPlay();
+            });
+        });
+
+        // Stop autoplay on hover
+        carousel.addEventListener('mouseenter', stopAutoPlay);
+        carousel.addEventListener('mouseleave', startAutoPlay);
+
+        // Start autoplay
+        startAutoPlay();
+    });
+
+    // ========================================
     // SCROLL REVEAL ANIMATIONS
     // ========================================
     const revealElements = document.querySelectorAll('.producto-card, .testimonio-card, .section-header');

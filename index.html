@@ -112,8 +112,25 @@
         <div class="productos-grid">
             <!-- Producto 1: Cuadros de Mandos -->
             <div class="producto-card">
-                <div class="producto-image">
-                    <img src="img/cuadro-mandos-1.jpg" alt="Cuadro de Mandos Digital" class="producto-img">
+                <div class="producto-image carousel" data-carousel="cuadros">
+                    <div class="carousel-slides">
+                        <img src="img/cuadro-mandos-1.jpg" alt="Cuadro de Mandos Digital 1" class="producto-img carousel-slide active">
+                        <img src="img/cuadro-mandos-2.jpg" alt="Cuadro de Mandos Digital 2" class="producto-img carousel-slide">
+                        <img src="img/cuadro-mandos-3.jpg" alt="Cuadro de Mandos Digital 3" class="producto-img carousel-slide">
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev" aria-label="Anterior">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                        </button>
+                        <button class="carousel-btn next" aria-label="Siguiente">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                        </button>
+                    </div>
+                    <div class="carousel-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
                     <div class="producto-overlay"></div>
                 </div>
                 <div class="producto-content">
@@ -143,9 +160,7 @@
             <!-- Producto 2: Controles de Climatización -->
             <div class="producto-card">
                 <div class="producto-image">
-                    <div class="placeholder-image">
-                        <span class="placeholder-emoji">❄️</span>
-                    </div>
+                    <img src="img/climatizador-1.jpg" alt="Control de Climatización Digital" class="producto-img">
                     <div class="producto-overlay"></div>
                 </div>
                 <div class="producto-content">
