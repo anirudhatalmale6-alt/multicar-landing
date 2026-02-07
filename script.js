@@ -60,6 +60,34 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ========================================
+    // DYNAMIC INSTALLATIONS COUNTER
+    // (Auto-increments by 2 every 2 weeks)
+    // ========================================
+    function calculateInstallations() {
+        const installationsEl = document.getElementById('installationsCount');
+        if (installationsEl) {
+            const baseCount = parseInt(installationsEl.getAttribute('data-base')) || 32;
+            const startDateStr = installationsEl.getAttribute('data-start-date') || '2025-02-07';
+            const startDate = new Date(startDateStr);
+            const today = new Date();
+
+            // Calculate weeks since start date
+            const msPerWeek = 7 * 24 * 60 * 60 * 1000;
+            const weeksSinceStart = Math.floor((today - startDate) / msPerWeek);
+
+            // Add 2 installations every 2 weeks
+            const additionalInstallations = Math.floor(weeksSinceStart / 2) * 2;
+            const totalInstallations = baseCount + additionalInstallations;
+
+            // Update the data-count attribute for animation
+            installationsEl.setAttribute('data-count', totalInstallations);
+        }
+    }
+
+    // Calculate installations before animation
+    calculateInstallations();
+
+    // ========================================
     // ANIMATED COUNTER FOR STATS
     // ========================================
     const statNumbers = document.querySelectorAll('.stat-number');
@@ -99,6 +127,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }, { threshold: 0.5 });
 
         statsObserver.observe(statsBar);
+    }
+
+    // ========================================
+    // SCROLL TO TOP BUTTON
+    // ========================================
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+    if (scrollTopBtn) {
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        // Scroll to top on click
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     }
 
     // ========================================
