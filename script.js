@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     version: data.version || 'No especificada',
                     producto: data.producto,
                     mensaje: data.mensaje || 'Sin mensaje adicional',
-                    _subject: 'Nueva solicitud Multicar - ' + data.producto,
+                    _subject: 'Nueva solicitud MultimediaCar - ' + data.producto,
                     _template: 'table'
                 })
             })
